@@ -30,31 +30,61 @@ class Carousel extends React.Component {
     }
 
     goToPrevImage = () => {
-        const oldImage = document.querySelector(`.image-${this.state.currentIndex}`);
+        //edge case, go the end of array
+        if (this.state.currentIndex === 0) {
+            const oldImage = document.querySelector(`.image-${this.state.currentIndex}`);
 
-        const newImage = document.querySelector(`.image-${this.state.currentIndex - 1}`);
-        newImage.style.opacity = 1;
+            const newImage = document.querySelector(`.image-${this.state.images.length - 1}`);
+            newImage.style.opacity = 1;
 
-        this.setState((prevState) => ({
-            currentIndex: prevState.currentIndex - 1
-        }));
+            this.setState((prevState) => ({
+                currentIndex: prevState.images.length - 1
+            }));
 
+            setTimeout(() => oldImage.style.opacity = 0, 150);
+        }
+        else {
+            const oldImage = document.querySelector(`.image-${this.state.currentIndex}`);
 
-        setTimeout(() => oldImage.style.opacity = 0, 150);
+            const newImage = document.querySelector(`.image-${this.state.currentIndex - 1}`);
+            newImage.style.opacity = 1;
+
+            this.setState((prevState) => ({
+                currentIndex: prevState.currentIndex - 1
+            }));
+
+            setTimeout(() => oldImage.style.opacity = 0, 150);
+        }
     }
 
     goToNextImage = () => {
-        const oldImage = document.querySelector(`.image-${this.state.currentIndex}`);
-        // oldImage.style.opacity = 0;
+        //edge case, go to beginning of array
+        if (this.state.currentIndex === this.state.images.length - 1) {
+            const oldImage = document.querySelector(`.image-${this.state.currentIndex}`);
+            // oldImage.style.opacity = 0;
 
-        const newImage = document.querySelector(`.image-${this.state.currentIndex + 1}`);
-        newImage.style.opacity = 1;
+            const newImage = document.querySelector(`.image-0`);
+            newImage.style.opacity = 1;
 
-        this.setState((prevState) => ({
-            currentIndex: prevState.currentIndex + 1
-        }));
+            this.setState((prevState) => ({
+                currentIndex: 0
+            }));
 
-        setTimeout(() =>  oldImage.style.opacity = 0, 150);
+            setTimeout(() => oldImage.style.opacity = 0, 150);
+        }
+        else {
+            const oldImage = document.querySelector(`.image-${this.state.currentIndex}`);
+            // oldImage.style.opacity = 0;
+
+            const newImage = document.querySelector(`.image-${this.state.currentIndex + 1}`);
+            newImage.style.opacity = 1;
+
+            this.setState((prevState) => ({
+                currentIndex: prevState.currentIndex + 1
+            }));
+
+            setTimeout(() => oldImage.style.opacity = 0, 150);
+        }
     }
 
     imageWidth = () => {

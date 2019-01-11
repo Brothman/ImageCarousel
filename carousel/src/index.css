@@ -14,6 +14,8 @@ code {
 }
 
 .carousel {
+  width: 600px;
+  height: 450px;
   max-width: 600px;
   max-height: 450px;
   position: relative;
@@ -30,3 +32,30 @@ code {
   height: 100%;
 }
 
+.nextArrow, .backArrow {
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.nextArrow:hover, .backArrow:hover {
+  opacity: 1;
+}
+
+.nextArrow {
+  left: 820px;
+  top: 170px;
+}
+
+.backArrow {
+  left: 315px;
+  top: 170px;
+}
