@@ -1,8 +1,11 @@
 import React from 'react';
 
-const TinyImage = ({ url, index }) => {
+const TinyImage = ({ url, index, goToSelectedImage }) => {
     return ( 
-        <img className={`tiny-image-${index}`} src={`${url}`} />
+        <img className={`tiny-image tiny-image-${index}`} 
+             src={`${url}`}
+             onClick={() => {goToSelectedImage(index)}}
+             />
      );
 }
  

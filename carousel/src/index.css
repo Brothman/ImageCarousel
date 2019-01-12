@@ -15,17 +15,20 @@ code {
 
 .carousel {
   width: 600px;
-  height: 450px;
+  height: 400px;
   max-width: 600px;
-  max-height: 450px;
+  max-height: 400px;
   position: relative;
+  margin: 0 auto;
 }
 
 .image {
   width: 100%;
+  max-height: 400px;
   position: absolute;
   transition: opacity 0.3s ease-in;
   opacity: 0;
+  left: 0;
 }
 
 .image-wrapper {
@@ -51,11 +54,46 @@ code {
 }
 
 .nextArrow {
-  left: 820px;
+  left: 525px;
   top: 170px;
 }
 
 .backArrow {
-  left: 315px;
+  left: 15px;
   top: 170px;
+}
+
+.tiny-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  transition: transform 0.5s ease;
+  opacity: 0.5;
+}
+
+.tiny-image:hover {
+  opacity: 1;
+}
+
+.tiny-image-container {
+  display: flex;
+  max-width: 600px;
+  position: absolute;
+  top: 440px;
+  left: 0;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.tiny-image-counter {
+  background-color: #444;
+  width: 60px;
+  height: 20px;
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: 410px;
+  left: 0px;
 }
