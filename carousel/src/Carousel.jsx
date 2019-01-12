@@ -142,7 +142,7 @@ class Carousel extends React.Component {
 
     adjustTinyImages = () => {
         // used for resetting back to start position
-        if (this.state.currentIndex === 8) {
+        if (this.state.currentIndex <= 8) {
            this.resetTinyImages();
         }
         else if (this.state.currentIndex >= 9 && this.state.images.length > 12) {
@@ -175,13 +175,95 @@ class Carousel extends React.Component {
         }
     }
 
+    fullScreen = () => {
+        const image = document.querySelector('.image');
+        if (image.style.height === '80%') {
+            this.smallScreen();
+        }
+        else {
+            const carousel = document.querySelector('.carousel');
+            carousel.style.height = '100vh';
+            carousel.style.width = "100vw";
+
+            const images = document.getElementsByClassName('image');
+
+            for (let i = 0; i < images.length; i++) {
+                //translate by the size of the tinyImage + margin
+                // images[i].className = `image-fullScreen`;
+                images[i].style.height = '80%';
+                images[i].style.width = 'auto';
+                images[i].style.maxHeight = 'none';
+                images[i].style.top = '50%';
+                images[i].style.left = '50%';
+                images[i].style.transform = 'translate(-50%, -50%)';
+            }
+
+            const nextArrow = document.querySelector('.nextArrow');
+            const backArrow = document.querySelector('.backArrow');
+
+            nextArrow.style.top = "50%";
+            backArrow.style.top = "50%";
+            nextArrow.style.left = "94%";
+
+            const tinyImageContainer = document.querySelector('.tiny-image-container');
+            tinyImageContainer.style.top = `94%`;
+            tinyImageContainer.style.left = "20%";
+            tinyImageContainer.style.maxWidth = "1200px";
+
+            const tinyImageCounter = document.querySelector('.tiny-image-counter');
+            tinyImageCounter.style.top = `91%`;
+            tinyImageCounter.style.left = "20%";
+
+            const modalBackground = document.querySelector('.modal-background');
+            modalBackground.style.display = "block";
+        }
+    }
+
+    smallScreen = () => {
+        const carousel = document.querySelector('.carousel');
+        carousel.style.height = '450px';
+        carousel.style.width = "600px";
+
+        const images = document.getElementsByClassName('image');
+
+        for (let i = 0; i < images.length; i++) {
+            //translate by the size of the tinyImage + margin
+            // images[i].className = `image-fullScreen`;
+            images[i].style.height = 'auto';
+            images[i].style.width = '100%';
+            images[i].style.maxHeight = '400px';
+            images[i].style.top = '0';
+            images[i].style.left = '0';
+            images[i].style.transform = 'none';
+        }
+
+        const nextArrow = document.querySelector('.nextArrow');
+        const backArrow = document.querySelector('.backArrow');
+
+        nextArrow.style.top = "170px";
+        backArrow.style.top = "170px";
+        nextArrow.style.left = "525px";
+
+        const tinyImageContainer = document.querySelector('.tiny-image-container');
+        tinyImageContainer.style.top = `440px`;
+        tinyImageContainer.style.left = "0";
+        tinyImageContainer.style.maxWidth = "600px";
+
+        const tinyImageCounter = document.querySelector('.tiny-image-counter');
+        tinyImageCounter.style.top = `410px`;
+        tinyImageCounter.style.left = "0";
+
+        const modalBackground = document.querySelector('.modal-background');
+        modalBackground.style.display = "none";
+    }
+
 
 
 
 
     render() { 
         const images = this.state.images.map((image, index) => {
-            return <Image key={index} image={image} index={index} />
+            return <Image key={index} image={image} index={index} fullScreen={this.fullScreen} />
         });
 
         const tinyImages = this.state.images.map((url, index) => {
@@ -189,7 +271,7 @@ class Carousel extends React.Component {
         });
 
         return (
-            <div className="carousel">
+            <div className="carousel" >
 
                 {images}
                 <NextArrow goToNextImage={this.goToNextImage} />
@@ -200,6 +282,8 @@ class Carousel extends React.Component {
                 </div>
 
                 <TinyImageCounter index={this.state.currentIndex} size={this.state.images.length} />
+
+                <div className="modal-background" onClick={this.smallScreen} />
             </div>
         );
     }

@@ -10,7 +10,9 @@ class Image extends React.Component {
 
     render() { 
         return ( 
-            <img className={`image image-${this.props.index}`} src={`${this.props.image}`} />
+            <img className={`image image-${this.props.index}`} 
+                 src={`${this.props.image}`}
+                 onClick={() => this.props.fullScreen()} />
          );
     }
 }

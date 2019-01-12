@@ -16,8 +16,6 @@ code {
 .carousel {
   width: 600px;
   height: 400px;
-  max-width: 600px;
-  max-height: 400px;
   position: relative;
   margin: 0 auto;
 }
@@ -29,6 +27,17 @@ code {
   transition: opacity 0.3s ease-in;
   opacity: 0;
   left: 0;
+  z-index: 1;
+}
+
+.modal-background {
+  display: none;
+  width: 100%;
+  height: 100%;
+  /* position: fixed; */
+  background-color: black;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .image-wrapper {
@@ -47,6 +56,7 @@ code {
   opacity: 0.4;
   transition: opacity 0.3s ease;
   cursor: pointer;
+  z-index: 1;
 }
 
 .nextArrow:hover, .backArrow:hover {
@@ -56,11 +66,13 @@ code {
 .nextArrow {
   left: 525px;
   top: 170px;
+  z-index: 1;
 }
 
 .backArrow {
   left: 15px;
   top: 170px;
+  z-index: 1;
 }
 
 .tiny-image {
@@ -85,6 +97,7 @@ code {
   left: 0;
   transition: transform 0.3s ease;
   overflow: hidden;
+  z-index: 1;
 }
 
 .tiny-image-counter {
@@ -96,4 +109,5 @@ code {
   position: absolute;
   top: 410px;
   left: 0px;
+  z-index: 1;
 }
