@@ -284,26 +284,22 @@ class Carousel extends React.Component {
         });
 
         return (
-            <div className="wrapper">
-                <div className="carousel" >
+            <div className="carousel" >
 
-                    {images}
-                    <NextArrow goToNextImage={this.goToNextImage} />
-                    <BackArrow goToPrevImage={this.goToPrevImage} />
+                {images}
+                <NextArrow goToNextImage={this.goToNextImage} />
+                <BackArrow goToPrevImage={this.goToPrevImage} />
 
-                    <div className="tiny-image-container">
-                    {tinyImages}
-                    </div>
-
-                    <TinyImageCounter index={this.state.currentIndex} size={this.props.images.length} />
-
-                    <div className="modal-background" onClick={this.smallScreen} />
+                <div className="tiny-image-container">
+                 {tinyImages}
                 </div>
+
+                <TinyImageCounter index={this.state.currentIndex} size={this.props.images.length} />
+
+                <div className="modal-background" onClick={this.smallScreen} />
             </div>
         );
     }
 }
  
 export default Carousel;
-
-//ReactDOM.createPortal(<div className="modal-background" onClick={this.smallScreen} />, document.body)
