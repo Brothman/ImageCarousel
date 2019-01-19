@@ -1,5 +1,4 @@
 # ImageCarousel-
-For RentedNY Freelance
 
 This is a barebones image carousel to display your photographs on the internet. The image carousel is set to a width of 600px and autosizes all images to 600px width, with a max-height of 450px. Underneath the image carousel are tiny images of each photo, which a user can click to see the photo. There is also a counter to help remind you which image you are viewing. 
 
