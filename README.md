@@ -21,4 +21,5 @@ ReactDOM.render(<div className="image-carousel-container">
                 </div>, document.getElementById("root"));
 
 ```
-
+# Find it Live
+https://imagecarousel.surge.sh/
